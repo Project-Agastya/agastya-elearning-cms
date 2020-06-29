@@ -1,2 +1,3 @@
-# agastya-elearning-cms
-Agastya NGO's Content Management Server for E-Learning 
+# Strapi application
+
+A quick description of your strapi application
