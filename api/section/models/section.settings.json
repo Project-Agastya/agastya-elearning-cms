@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sections",
+  "info": {
+    "name": "Section"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "Description": {
+      "type": "text"
+    },
+    "Sequence": {
+      "type": "integer",
+      "required": true,
+      "unique": true
+    },
+    "Lessons": {
+      "collection": "lesson"
+    }
+  }
+}

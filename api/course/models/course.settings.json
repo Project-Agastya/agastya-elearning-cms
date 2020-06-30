@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "courses",
+  "info": {
+    "name": "Course"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "Teachers": {
+      "collection": "teacher",
+      "via": "Courses",
+      "dominant": true
+    },
+    "Sections": {
+      "collection": "section"
+    },
+    "Categories": {
+      "collection": "category",
+      "via": "Courses",
+      "dominant": true
+    },
+    "Name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "Description": {
+      "type": "text"
+    },
+    "Requirements": {
+      "type": "text"
+    },
+    "Objectives": {
+      "type": "text"
+    },
+    "Likes": {
+      "type": "integer"
+    }
+  }
+}

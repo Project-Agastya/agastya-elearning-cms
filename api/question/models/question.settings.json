@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "questions",
+  "info": {
+    "name": "Question"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "Question": {
+      "type": "text"
+    },
+    "Choices": {
+      "type": "text"
+    },
+    "CorrectAnswer": {
+      "type": "text"
+    },
+    "Contents": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "Points": {
+      "type": "integer"
+    }
+  }
+}

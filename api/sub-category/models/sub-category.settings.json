@@ -1,8 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "categories",
+  "collectionName": "sub_categories",
   "info": {
-    "name": "Category"
+    "name": "SubCategory"
   },
   "options": {
     "increments": true,
@@ -11,14 +11,14 @@
   "attributes": {
     "Name": {
       "type": "string",
-      "unique": true,
-      "required": true
+      "required": true,
+      "unique": true
     },
     "Description": {
-      "type": "string"
+      "type": "text"
     },
     "Image": {
-      "collection": "file",
+      "model": "file",
       "via": "related",
       "allowedTypes": [
         "images",
@@ -28,13 +28,12 @@
       "plugin": "upload",
       "required": false
     },
-    "Courses": {
-      "via": "Categories",
-      "collection": "course"
+    "Category": {
+      "model": "category",
+      "via": "SubCategories"
     },
-    "SubCategories": {
-      "via": "Category",
-      "collection": "sub-category"
+    "Courses": {
+      "collection": "course"
     }
   }
 }

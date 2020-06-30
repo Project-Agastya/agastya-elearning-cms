@@ -1,24 +1,23 @@
 {
   "kind": "collectionType",
-  "collectionName": "categories",
+  "collectionName": "students",
   "info": {
-    "name": "Category"
+    "name": "Student"
   },
   "options": {
     "increments": true,
     "timestamps": true
   },
   "attributes": {
-    "Name": {
+    "FirstName": {
       "type": "string",
-      "unique": true,
       "required": true
     },
-    "Description": {
+    "LastName": {
       "type": "string"
     },
-    "Image": {
-      "collection": "file",
+    "Photo": {
+      "model": "file",
       "via": "related",
       "allowedTypes": [
         "images",
@@ -28,13 +27,17 @@
       "plugin": "upload",
       "required": false
     },
-    "Courses": {
-      "via": "Categories",
-      "collection": "course"
+    "Email": {
+      "type": "string"
     },
-    "SubCategories": {
-      "via": "Category",
-      "collection": "sub-category"
+    "School": {
+      "type": "string"
+    },
+    "City": {
+      "type": "string"
+    },
+    "Courses": {
+      "collection": "course"
     }
   }
 }
