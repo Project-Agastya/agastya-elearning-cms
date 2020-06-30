@@ -37,7 +37,7 @@
     "Sequence": {
       "type": "integer",
       "required": true,
-      "unique": true
+      "unique": false
     },
     "Exercises": {
       "collection": "exercise"

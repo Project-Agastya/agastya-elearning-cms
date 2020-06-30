@@ -20,7 +20,7 @@
     "Sequence": {
       "type": "integer",
       "required": true,
-      "unique": true
+      "unique": false
     },
     "Lessons": {
       "collection": "lesson"
