@@ -9,19 +9,19 @@
     "timestamps": true
   },
   "attributes": {
-    "Student": {
+    "student": {
       "model": "student"
     },
-    "Course": {
+    "course": {
       "model": "course"
     },
-    "Section": {
+    "section": {
       "model": "section"
     },
-    "Lesson": {
+    "lesson": {
       "model": "lesson"
     },
-    "Status": {
+    "status": {
       "type": "boolean"
     }
   }

@@ -2,27 +2,27 @@
   "kind": "collectionType",
   "collectionName": "sections",
   "info": {
-    "name": "Section"
+    "name": "section"
   },
   "options": {
     "increments": true,
     "timestamps": true
   },
   "attributes": {
-    "Name": {
+    "name": {
       "type": "string",
       "required": true,
       "unique": true
     },
-    "Description": {
+    "description": {
       "type": "text"
     },
-    "Sequence": {
+    "sequence": {
       "type": "integer",
       "required": true,
       "unique": false
     },
-    "Lessons": {
+    "lessons": {
       "collection": "lesson"
     }
   }

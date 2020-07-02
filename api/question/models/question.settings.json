@@ -2,23 +2,23 @@
   "kind": "collectionType",
   "collectionName": "questions",
   "info": {
-    "name": "Question"
+    "name": "question"
   },
   "options": {
     "increments": true,
     "timestamps": true
   },
   "attributes": {
-    "Question": {
+    "question": {
       "type": "text"
     },
-    "Choices": {
+    "choices": {
       "type": "text"
     },
-    "CorrectAnswer": {
+    "correctAnswer": {
       "type": "text"
     },
-    "Contents": {
+    "contents": {
       "collection": "file",
       "via": "related",
       "allowedTypes": [
@@ -29,7 +29,7 @@
       "plugin": "upload",
       "required": false
     },
-    "Points": {
+    "points": {
       "type": "integer"
     }
   }

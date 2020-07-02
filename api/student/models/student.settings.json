@@ -2,21 +2,21 @@
   "kind": "collectionType",
   "collectionName": "students",
   "info": {
-    "name": "Student"
+    "name": "student"
   },
   "options": {
     "increments": true,
     "timestamps": true
   },
   "attributes": {
-    "FirstName": {
+    "firstName": {
       "type": "string",
       "required": true
     },
-    "LastName": {
+    "lastName": {
       "type": "string"
     },
-    "Photo": {
+    "photo": {
       "model": "file",
       "via": "related",
       "allowedTypes": [
@@ -27,16 +27,16 @@
       "plugin": "upload",
       "required": false
     },
-    "Email": {
+    "email": {
       "type": "string"
     },
-    "School": {
+    "school": {
       "type": "string"
     },
-    "City": {
+    "city": {
       "type": "string"
     },
-    "Courses": {
+    "courses": {
       "collection": "course"
     }
   }

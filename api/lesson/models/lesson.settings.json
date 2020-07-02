@@ -2,22 +2,22 @@
   "kind": "collectionType",
   "collectionName": "lessons",
   "info": {
-    "name": "Lesson"
+    "name": "lesson"
   },
   "options": {
     "increments": true,
     "timestamps": true
   },
   "attributes": {
-    "Name": {
+    "name": {
       "type": "string",
       "required": true,
       "unique": true
     },
-    "Description": {
+    "description": {
       "type": "text"
     },
-    "Content": {
+    "content": {
       "collection": "file",
       "via": "related",
       "allowedTypes": [
@@ -28,19 +28,16 @@
       "plugin": "upload",
       "required": false
     },
-    "YoutubeUrl": {
-      "type": "string"
+    "animationUrl": {
+      "collection": "url"
     },
-    "AnimationUrl": {
-      "type": "string"
-    },
-    "Sequence": {
+    "sequence": {
       "type": "integer",
       "required": true,
       "unique": false
     },
-    "Exercises": {
-      "collection": "exercise"
+    "youtubeUrl": {
+      "collection": "url"
     }
   }
 }

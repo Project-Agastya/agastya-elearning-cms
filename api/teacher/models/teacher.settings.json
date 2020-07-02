@@ -2,33 +2,33 @@
   "kind": "collectionType",
   "collectionName": "teachers",
   "info": {
-    "name": "Teacher"
+    "name": "teacher"
   },
   "options": {
     "increments": true,
     "timestamps": true
   },
   "attributes": {
-    "FirstName": {
+    "firstName": {
       "type": "string",
       "required": true
     },
-    "LastName": {
+    "lastName": {
       "type": "string"
     },
-    "Title": {
+    "title": {
       "type": "string"
     },
-    "Introduction": {
+    "introduction": {
       "type": "text"
     },
-    "Website": {
+    "website": {
       "type": "string"
     },
-    "LinkedIn": {
+    "linkedIn": {
       "type": "string"
     },
-    "Photo": {
+    "photo": {
       "model": "file",
       "via": "related",
       "allowedTypes": [
@@ -39,14 +39,14 @@
       "plugin": "upload",
       "required": false
     },
-    "Email": {
+    "email": {
       "type": "string"
     },
-    "Likes": {
+    "likes": {
       "type": "integer"
     },
-    "Courses": {
-      "via": "Teachers",
+    "courses": {
+      "via": "teachers",
       "collection": "course"
     }
   }

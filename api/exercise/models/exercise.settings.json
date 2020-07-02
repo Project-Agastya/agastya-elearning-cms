@@ -2,14 +2,14 @@
   "kind": "collectionType",
   "collectionName": "exercises",
   "info": {
-    "name": "Exercise"
+    "name": "exercise"
   },
   "options": {
     "increments": true,
     "timestamps": true
   },
   "attributes": {
-    "Questions": {
+    "questions": {
       "collection": "question"
     }
   }
