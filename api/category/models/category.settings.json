@@ -29,8 +29,8 @@
       "required": false
     },
     "courses": {
-      "collection": "course",
-      "via": "categories"
+      "via": "categories",
+      "collection": "course"
     },
     "featuredCourse": {
       "model": "course"
