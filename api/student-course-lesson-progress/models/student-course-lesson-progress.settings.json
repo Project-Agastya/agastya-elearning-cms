@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "student_course_lesson_progresses",
+  "info": {
+    "name": "StudentCourseLessonProgress"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "student": {
+      "model": "student"
+    },
+    "course": {
+      "model": "course"
+    },
+    "section": {
+      "model": "section"
+    },
+    "lesson": {
+      "model": "lesson"
+    },
+    "status": {
+      "type": "boolean"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "urls",
+  "info": {
+    "name": "url"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "url": {
+      "type": "text"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "youtube",
+        "animation"
+      ]
+    }
+  }
+}

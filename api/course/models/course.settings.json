@@ -1,0 +1,63 @@
+{
+  "kind": "collectionType",
+  "collectionName": "courses",
+  "info": {
+    "name": "course"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "teachers": {
+      "collection": "teacher",
+      "via": "courses",
+      "dominant": true
+    },
+    "sections": {
+      "collection": "section"
+    },
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "requirements": {
+      "type": "text"
+    },
+    "objectives": {
+      "type": "text"
+    },
+    "likes": {
+      "type": "integer"
+    },
+    "categories": {
+      "collection": "category",
+      "via": "courses",
+      "dominant": true
+    },
+    "language": {
+      "type": "string"
+    },
+    "class": {
+      "type": "enumeration",
+      "enum": [
+        "Class_1",
+        "Class_2",
+        "Class_3",
+        "Class_4",
+        "Class_5",
+        "Class_6",
+        "Class_7",
+        "Class_8",
+        "Class_9",
+        "Class_10",
+        "Class_11",
+        "Class_12"
+      ]
+    }
+  }
+}

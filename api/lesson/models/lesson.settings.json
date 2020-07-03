@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "lessons",
+  "info": {
+    "name": "lesson"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "content": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "animationUrl": {
+      "collection": "url"
+    },
+    "sequence": {
+      "type": "integer",
+      "required": true,
+      "unique": false
+    },
+    "youtubeUrl": {
+      "collection": "url"
+    }
+  }
+}

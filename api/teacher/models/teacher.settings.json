@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "teachers",
+  "info": {
+    "name": "teacher"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "firstName": {
+      "type": "string",
+      "required": true
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "introduction": {
+      "type": "text"
+    },
+    "website": {
+      "type": "string"
+    },
+    "linkedIn": {
+      "type": "string"
+    },
+    "photo": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "email": {
+      "type": "string"
+    },
+    "likes": {
+      "type": "integer"
+    },
+    "courses": {
+      "via": "teachers",
+      "collection": "course"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "students",
+  "info": {
+    "name": "student"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "firstName": {
+      "type": "string",
+      "required": true
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "photo": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "email": {
+      "type": "string"
+    },
+    "school": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "courses": {
+      "collection": "course"
+    }
+  }
+}
