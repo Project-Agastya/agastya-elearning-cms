@@ -12,7 +12,7 @@ module.exports = {
     if (ctx.query._q) {
       entities = await strapi.services.course.search(ctx.query);
     } else {
-      entities = await strapi.services.course.find(ctx.query,['sections','sections.lessons']);
+      entities = await strapi.services.course.find(ctx.query,['sections','sections.lessons','teachers','categories','image']);
     }
 
     return entities.map(entity => sanitizeEntity(entity, { model: strapi.models.course }));
