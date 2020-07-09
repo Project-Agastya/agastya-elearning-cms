@@ -17,27 +17,13 @@
     "description": {
       "type": "text"
     },
-    "content": {
-      "collection": "file",
-      "via": "related",
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos"
-      ],
-      "plugin": "upload",
-      "required": false
-    },
-    "animationUrl": {
-      "collection": "url"
-    },
     "sequence": {
       "type": "integer",
       "required": true,
       "unique": false
     },
-    "youtubeUrl": {
-      "collection": "url"
+    "lessonContents": {
+      "collection": "lesson-content"
     }
   }
 }
