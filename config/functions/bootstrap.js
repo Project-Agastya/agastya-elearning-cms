@@ -1,4 +1,5 @@
 'use strict';
+require('strapi')
 
 /**
  * An asynchronous bootstrap function that runs before
@@ -10,4 +11,7 @@
  * See more details here: https://strapi.io/documentation/v3.x/concepts/configurations.html#bootstrap
  */
 
-module.exports = () => {};
+module.exports = () => {
+    
+    console.log("Strapi started with logger level : " + strapi.config.middleware.settings.logger.level)
+};
