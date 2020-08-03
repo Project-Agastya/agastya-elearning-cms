@@ -9,11 +9,6 @@
     "timestamps": true
   },
   "attributes": {
-    "teachers": {
-      "collection": "teacher",
-      "via": "courses",
-      "dominant": true
-    },
     "sections": {
       "collection": "section"
     },
@@ -33,11 +28,6 @@
     },
     "likes": {
       "type": "integer"
-    },
-    "categories": {
-      "collection": "category",
-      "via": "courses",
-      "dominant": true
     },
     "language": {
       "type": "string"

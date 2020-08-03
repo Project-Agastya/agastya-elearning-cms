@@ -1,8 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "categories",
+  "collectionName": "sub_topics",
   "info": {
-    "name": "category"
+    "name": "subTopic"
   },
   "options": {
     "increments": true,
@@ -11,7 +11,6 @@
   "attributes": {
     "name": {
       "type": "string",
-      "unique": true,
       "required": true
     },
     "description": {
@@ -21,16 +20,20 @@
       "model": "file",
       "via": "related",
       "allowedTypes": [
-        "images",
         "files",
+        "images",
         "videos"
       ],
       "plugin": "upload",
       "required": true
     },
-    "topics": {
-      "via": "categories",
-      "collection": "topic"
+    "topic": {
+      "model": "topic",
+      "via": "subTopics"
+    },
+    "contents": {
+      "via": "subTopic",
+      "collection": "content"
     }
   }
 }
