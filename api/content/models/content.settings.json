@@ -28,17 +28,6 @@
     "url": {
       "type": "string"
     },
-    "image": {
-      "model": "file",
-      "via": "related",
-      "allowedTypes": [
-        "files",
-        "images",
-        "videos"
-      ],
-      "plugin": "upload",
-      "required": true
-    },
     "description": {
       "type": "text"
     },
