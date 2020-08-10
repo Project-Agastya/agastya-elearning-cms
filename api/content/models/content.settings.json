@@ -14,17 +14,6 @@
       "required": true,
       "unique": false
     },
-    "media": {
-      "collection": "file",
-      "via": "related",
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos"
-      ],
-      "plugin": "upload",
-      "required": false
-    },
     "url": {
       "type": "string"
     },
@@ -52,12 +41,25 @@
       "type": "enumeration",
       "enum": [
         "student",
-        "teacher"
+        "teacher",
+        "both"
       ],
-      "required": true
+      "required": true,
+      "default": "student"
     },
     "classes": {
       "collection": "class"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "pdf",
+        "youtube",
+        "word",
+        "scorm"
+      ],
+      "required": true,
+      "default": "youtube"
     }
   }
 }
