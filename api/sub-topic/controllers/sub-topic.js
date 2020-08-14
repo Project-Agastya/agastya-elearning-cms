@@ -10,7 +10,7 @@ module.exports = {
     async findOne(ctx) {
         const { id } = ctx.params;
 
-        const entity = await strapi.services['sub-topic'].findOne({ id },['topic','contents','contents.classes']);
+        const entity = await strapi.services['sub-topic'].findOne({ id },['topic','contents','contents.classes','image']);
         return sanitizeEntity(entity, { model: strapi.models['sub-topic'] });
     },
 };
