@@ -10,6 +10,7 @@ var topicMap = {};
 var subTopicMap = {};
 var contentMap = {};
 var serviceUrl = "http://localhost:1337/"
+var serviceUrl = "https://agastya-elearning-cms.herokuapp.com/";
 
 // var workbook = XLSX.readFile('C:\\Users\\RahulG\\Desktop\\AgastyaData.xlsx');
 // console.log(worksheet_data)
@@ -17,12 +18,12 @@ var serviceUrl = "http://localhost:1337/"
 xlsxUrl = "https://agastya.blob.core.windows.net/agastya/AgastyaData.xlsx";
 
 const client = new Client({
-  // connectionString: "postgres://zkyddhsyiegsxl:41f38701c79184d953a8b78b690cd51a347be593b56ceafdfaceb3c9ad4d22d7@ec2-3-215-207-12.compute-1.amazonaws.com:5432/d6npdf1jtun8sq",
-  // ssl: {
-  //   rejectUnauthorized: false
-  // }
-  connectionString : "postgres://postgres:admin@localhost:27017/postgres",
-  ssl : false
+  connectionString: "postgres://zkyddhsyiegsxl:41f38701c79184d953a8b78b690cd51a347be593b56ceafdfaceb3c9ad4d22d7@ec2-3-215-207-12.compute-1.amazonaws.com:5432/d6npdf1jtun8sq",
+  ssl: {
+    rejectUnauthorized: false
+  }
+  // connectionString : "postgres://postgres:admin@localhost:27017/postgres",
+  // ssl : false
 });
 
 client.connect();
