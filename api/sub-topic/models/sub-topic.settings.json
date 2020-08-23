@@ -11,7 +11,8 @@
   "attributes": {
     "name": {
       "type": "string",
-      "required": true
+      "required": true,
+      "unique": true
     },
     "description": {
       "type": "text"
@@ -28,12 +29,12 @@
       "required": true
     },
     "topic": {
-      "model": "topic",
-      "via": "subTopics"
+      "via": "subTopics",
+      "model": "topic"
     },
     "contents": {
-      "via": "subTopic",
-      "collection": "content"
+      "collection": "content",
+      "via": "subTopic"
     }
   }
 }

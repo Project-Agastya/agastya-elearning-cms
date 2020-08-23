@@ -11,7 +11,8 @@
   "attributes": {
     "name": {
       "type": "string",
-      "required": true
+      "required": true,
+      "unique": true
     },
     "categories": {
       "collection": "category",
@@ -19,8 +20,8 @@
       "dominant": true
     },
     "subTopics": {
-      "via": "topic",
-      "collection": "sub-topic"
+      "collection": "sub-topic",
+      "via": "topic"
     }
   }
 }
