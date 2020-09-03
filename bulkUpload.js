@@ -9,8 +9,8 @@ var imageMap = {};
 var topicMap = {};
 var subTopicMap = {};
 var contentMap = {};
-var serviceUrl = "http://localhost:1337/"
-var serviceUrl = "https://agastya-elearning-cms.herokuapp.com/";
+// var serviceUrl = "http://localhost:1337/"
+var serviceUrl = "https://agastya-elearning.herokuapp.com/";
 
 // var workbook = XLSX.readFile('C:\\Users\\RahulG\\Desktop\\AgastyaData.xlsx');
 // console.log(worksheet_data)
@@ -18,7 +18,7 @@ var serviceUrl = "https://agastya-elearning-cms.herokuapp.com/";
 xlsxUrl = "https://agastya.blob.core.windows.net/agastya/AgastyaData.xlsx";
 
 const client = new Client({
-  connectionString: "postgres://zkyddhsyiegsxl:41f38701c79184d953a8b78b690cd51a347be593b56ceafdfaceb3c9ad4d22d7@ec2-3-215-207-12.compute-1.amazonaws.com:5432/d6npdf1jtun8sq",
+  connectionString: "postgres://uft044057r2rr9:p201a12c4870b605795d2a057ef1add451ccee7d85ae06526fe2dfbfbc41098fd@ec2-52-6-107-12.compute-1.amazonaws.com:5432/d2loulosej0fk",
   ssl: {
     rejectUnauthorized: false
   }
@@ -32,7 +32,9 @@ request(xlsxUrl, {encoding: null}, function(err, res, data) {
 	if(err || res.statusCode !== 200) return;
 
 	/* data is a node Buffer that can be passed to XLSX.read */
-	var workbook = XLSX.read(data, {type:'buffer'});
+  var workbook = XLSX.read(data, {type:'buffer'});
+  // var workbook = XLSX.readFile('C:\\Users\\RahulG\\Desktop\\AgastyaData.xlsx');
+
   var sheet_name_list = workbook.SheetNames;
   sheet_name_list.forEach(function(y) {
     var worksheet = workbook.Sheets[y];
@@ -138,6 +140,7 @@ function insertContents(){
         let classes = contentJson['classes'].toLowerCase().split(',')
         contentJson['classes'] = []
         for(className of classes){
+          className = className.trim()
           if(classMap[className]){
             let classId = classMap[className]
             contentJson['classes'].push(classId)
@@ -222,6 +225,7 @@ function insertCategories(){
         let topics = contentJson['topics'].toLowerCase().split(',')
         contentJson['topics'] = []
         for(topicName of topics){
+          topicName = topicName.trim()
           if(topicMap[topicName]){
             let topicId = topicMap[topicName]
             contentJson['topics'].push(topicId)
@@ -271,12 +275,15 @@ function insertCategories(){
 function insertTopics(){
   var contents = worksheet_data['topics']
   url = serviceUrl + 'topics'
+  console.log(subTopicMap)
   for(contentJson of contents){
     console.log(contentJson)
     if(contentJson['subTopics']){
       let subTopics = contentJson['subTopics'].toLowerCase().split(',')
       contentJson['subTopics'] = []
+      console.log(subTopics)
       for(subTopicName of subTopics){
+        subTopicName = subTopicName.trim()
         if(subTopicMap[subTopicName]){
           let subTopicId = subTopicMap[subTopicName]
           contentJson['subTopics'].push(subTopicId)
