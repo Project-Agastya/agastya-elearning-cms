@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "topics",
+  "info": {
+    "name": "topic"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "categories": {
+      "collection": "category",
+      "via": "topics",
+      "dominant": true
+    },
+    "subTopics": {
+      "collection": "sub-topic",
+      "via": "topic"
+    }
+  }
+}

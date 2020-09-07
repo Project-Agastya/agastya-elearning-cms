@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/featured-sub-topics",
+      "handler": "featured-sub-topics.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/featured-sub-topics/count",
+      "handler": "featured-sub-topics.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/featured-sub-topics/:id",
+      "handler": "featured-sub-topics.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/featured-sub-topics",
+      "handler": "featured-sub-topics.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/featured-sub-topics/:id",
+      "handler": "featured-sub-topics.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/featured-sub-topics/:id",
+      "handler": "featured-sub-topics.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

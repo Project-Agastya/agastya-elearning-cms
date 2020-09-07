@@ -1,0 +1,65 @@
+{
+  "kind": "collectionType",
+  "collectionName": "contents",
+  "info": {
+    "name": "content"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "url": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "subTopic": {
+      "via": "contents",
+      "model": "sub-topic"
+    },
+    "level": {
+      "type": "enumeration",
+      "enum": [
+        "basic",
+        "intermediary",
+        "advanced"
+      ],
+      "required": true
+    },
+    "language": {
+      "type": "string",
+      "required": true
+    },
+    "audience": {
+      "type": "enumeration",
+      "enum": [
+        "student",
+        "teacher",
+        "both"
+      ],
+      "required": true,
+      "default": "student"
+    },
+    "classes": {
+      "collection": "class"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "pdf",
+        "youtube",
+        "word",
+        "scorm"
+      ],
+      "required": true,
+      "default": "youtube"
+    }
+  }
+}
