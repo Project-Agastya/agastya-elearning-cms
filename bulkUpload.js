@@ -12,10 +12,10 @@ var contentMap = {};
 // var serviceUrl = "http://localhost:1337/"
 var serviceUrl = "https://agastya-elearning.herokuapp.com/";
 
-// var workbook = XLSX.readFile('C:\\Users\\RahulG\\Desktop\\AgastyaData.xlsx');
-// console.log(worksheet_data)
+var workbook = XLSX.readFile('C:\\Users\\RahulG\\Desktop\\AgastyaData (1).xlsx');
+console.log(worksheet_data)
 
-xlsxUrl = "https://agastya.blob.core.windows.net/agastya/AgastyaData.xlsx";
+xlsxUrl = "https://hdrive68138919024.blob.core.windows.net/agastya-elearning/AgastyaData.xlsx";
 
 const client = new Client({
   connectionString: "postgres://uft044057r2rr9:p201a12c4870b605795d2a057ef1add451ccee7d85ae06526fe2dfbfbc41098fd@ec2-52-6-107-12.compute-1.amazonaws.com:5432/d2loulosej0fk",
@@ -32,7 +32,7 @@ request(xlsxUrl, {encoding: null}, function(err, res, data) {
 	if(err || res.statusCode !== 200) return;
 
 	/* data is a node Buffer that can be passed to XLSX.read */
-  var workbook = XLSX.read(data, {type:'buffer'});
+  // var workbook = XLSX.read(data, {type:'buffer'});
   // var workbook = XLSX.readFile('C:\\Users\\RahulG\\Desktop\\AgastyaData.xlsx');
 
   var sheet_name_list = workbook.SheetNames;
@@ -72,8 +72,8 @@ request(xlsxUrl, {encoding: null}, function(err, res, data) {
 
 function asyncPostCall(url,jsonReq){
   return new Promise( resolve => {
-    console.log(url) 
-    console.log(jsonReq)
+    // console.log(url) 
+    // console.log(jsonReq)
     request.post(
       url,
       {json : jsonReq},
@@ -98,7 +98,7 @@ function insertClasses(){
   var contents = worksheet_data['classes']
   // console.log(contents)
   url = serviceUrl + 'classes'
-  console.log(contents)
+  // console.log(contents)
   allPromises = []
   for(json of contents){
     allPromises.push(asyncPostCall(url,json))
@@ -165,39 +165,57 @@ function insertContents(){
       throw new Error(error)
     })
     .finally(() => {
-      console.log(subTopicMap)
-      url = serviceUrl + 'contents'
-      for(contentJson of contents){
-        let subTopicName = contentJson['subTopic'].toLowerCase()
-        if(subTopicMap[subTopicName]){
-          let subTopicId = subTopicMap[subTopicName]
-          contentJson['subTopic'] = subTopicId
-        }
-        else{
-          console.error("Sub-Topic does not exist with name " + subTopicName)
+        client.query('select name,language from contents;')
+        .then( (res) => {
+          for (let row of res.rows) {
+            contentMap[row["name"].toLowerCase() + row["language"].toLowerCase()] = 1;
+          }
+        })
+        .catch( (error) => {
+          console.error(error)
           client.end();
-          throw new Error("Sub-Topic does not exist with name " + subTopicName)
+          throw new Error(error)
+        })
+      .finally(() => {
+        console.log(subTopicMap)
+        url = serviceUrl + 'contents'
+        for(contentJson of contents){
+          let subTopicName = contentJson['subTopic'].toLowerCase()
+          if(subTopicMap[subTopicName]){
+            let subTopicId = subTopicMap[subTopicName]
+            contentJson['subTopic'] = subTopicId
+          }
+          else{
+            console.error("Sub-Topic does not exist with name " + subTopicName)
+            client.end();
+            throw new Error("Sub-Topic does not exist with name " + subTopicName)
+          }
         }
-      }
-      console.log(contents)
-      allPromises = []
-      for(json of contents){
-        allPromises.push(asyncPostCall(url,json))
-      }
-      Promise.all(allPromises)
-      .catch( err => {
-        console.error(err)
-        client.end()
-        throw new Error(err);
+        //console.log(contents)
+        console.log(contentMap)
+        allPromises = []
+        for(json of contents){
+         // console.log(json)
+          if(contentMap[json['name'].toLowerCase() + json['language'].toLowerCase()]==1)
+            console.log("Content already exists with name and language :-" + json['name'] + ' ' + json['language'])
+          else
+            allPromises.push(asyncPostCall(url,json))
+        }
+        Promise.all(allPromises)
+        .catch( err => {
+          console.error(err)
+          client.end()
+          throw new Error(err);
+        })
+        .then( () => {
+          console.log("All Request Sucessfull")
+        })
+        .finally( () => {
+          console.log("Finished With Contents")
+          insertTopics()
+        } 
+        )
       })
-      .then( () => {
-        console.log("All Request Sucessfull")
-      })
-      .finally( () => {
-        console.log("Finished With Contents")
-        insertTopics()
-      } 
-      )
     })
   })
 }
@@ -218,7 +236,7 @@ function insertCategories(){
     throw new Error(error)
   })
   .finally(() => {
-    console.log(imageMap)
+    // console.log(imageMap)
     url = serviceUrl + 'categories'
     for(contentJson of contents){
       if(contentJson['topics']){
@@ -249,7 +267,7 @@ function insertCategories(){
         throw new Error("Image does not exist with name " + imageName)
       }
     }
-    console.log(contents)
+    // console.log(contents)
     allPromises = []
     for(json of contents){
       allPromises.push(asyncPostCall(url,json))
@@ -275,13 +293,13 @@ function insertCategories(){
 function insertTopics(){
   var contents = worksheet_data['topics']
   url = serviceUrl + 'topics'
-  console.log(subTopicMap)
+  // console.log(subTopicMap)
   for(contentJson of contents){
-    console.log(contentJson)
+    // console.log(contentJson)
     if(contentJson['subTopics']){
       let subTopics = contentJson['subTopics'].toLowerCase().split(',')
       contentJson['subTopics'] = []
-      console.log(subTopics)
+      // console.log(subTopics)
       for(subTopicName of subTopics){
         subTopicName = subTopicName.trim()
         if(subTopicMap[subTopicName]){
@@ -296,7 +314,7 @@ function insertTopics(){
       }
     }
   }
-  console.log(contents)
+  // console.log(contents)
   allPromises = []
   for(json of contents){
     allPromises.push(asyncPostCall(url,json))
@@ -333,7 +351,7 @@ function insertSubTopics(){
     throw new Error(error)
   })
   .finally(() => {
-    console.log(imageMap)
+    // console.log(imageMap)
     url = serviceUrl + 'sub-topics'
     for(contentJson of contents){
       let imageName = contentJson['image'].toLowerCase()
@@ -348,7 +366,7 @@ function insertSubTopics(){
         throw new Error("Image does not exist with name " + imageName)
       }
     }
-    console.log(contents)
+    // console.log(contents)
     allPromises = []
     for(json of contents){
       allPromises.push(asyncPostCall(url,json))

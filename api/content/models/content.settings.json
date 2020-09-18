@@ -12,7 +12,7 @@
     "name": {
       "type": "string",
       "required": true,
-      "unique": true
+      "unique": false
     },
     "url": {
       "type": "string"
@@ -21,8 +21,8 @@
       "type": "text"
     },
     "subTopic": {
-      "via": "contents",
-      "model": "sub-topic"
+      "model": "sub-topic",
+      "via": "contents"
     },
     "level": {
       "type": "enumeration",
