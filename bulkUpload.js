@@ -212,7 +212,7 @@ function insertContents(){
         })
         .finally( () => {
           console.log("Finished With Contents")
-          //insertTopics()
+          insertTopics()
         } 
         )
       })
