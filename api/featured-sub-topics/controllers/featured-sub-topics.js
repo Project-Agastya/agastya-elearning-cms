@@ -9,7 +9,7 @@ const { sanitizeEntity } = require('strapi-utils');
 module.exports = {
     async findOne(ctx) {
         const { id } = ctx.params;
-        const entity = await strapi.services['featured-sub-topics'].findOne({ id },['subTopics','subTopics.topic','subTopics.topic.categories','subTopics.contents']);
+        const entity = await strapi.services['featured-sub-topics'].findOne({ id },['subTopics','subTopics.image','subTopics.topic','subTopics.topic.categories','subTopics.contents']);
         for (let subTopic of entity.subTopics){
             let languages = new Set() 
             for(let content of subTopic.contents){
@@ -24,7 +24,7 @@ module.exports = {
     async find(ctx) {
         const { id } = ctx.params;
         
-        const entity = await strapi.services['featured-sub-topics'].find(ctx.query,['subTopics','subTopics.topic','subTopics.topic.categories','subTopics.contents']);
+        const entity = await strapi.services['featured-sub-topics'].find(ctx.query,['subTopics','subTopics.image','subTopics.topic','subTopics.topic.categories','subTopics.contents']);
         for (let subEntity of entity){
             for (let subTopic of subEntity.subTopics){
                 let languages = new Set() 
