@@ -73,7 +73,7 @@ module.exports = {
 
         for(var key in stateContentGrouping){
             var currRecord = {}
-            currRecord["District"] = key.split("--")[0]
+            currRecord["State"] = key.split("--")[0]
             currRecord["Content Name"] = key.split("--")[1]
             currRecord["Views"] = stateContentGrouping[key]
             stateRecords.push(currRecord)

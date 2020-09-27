@@ -60,6 +60,10 @@
       ],
       "required": true,
       "default": "youtube"
+    },
+    "views": {
+      "type": "integer",
+      "default": 0
     }
   }
 }
