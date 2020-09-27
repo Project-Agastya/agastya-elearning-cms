@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "teacher_contents",
+  "info": {
+    "name": "teacherContent"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "teacher": {
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "content": {
+      "model": "content"
+    },
+    "count": {
+      "type": "integer",
+      "default": 1
+    }
+  }
+}
