@@ -42,7 +42,8 @@
       "enum": [
         "student",
         "teacher",
-        "both"
+        "both",
+        "teacherExclusive"
       ],
       "required": true,
       "default": "student"
@@ -56,7 +57,8 @@
         "pdf",
         "youtube",
         "word",
-        "scorm"
+        "scorm",
+        "feedback"
       ],
       "required": true,
       "default": "youtube"
