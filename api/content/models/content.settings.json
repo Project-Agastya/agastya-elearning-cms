@@ -21,8 +21,8 @@
       "type": "text"
     },
     "subTopic": {
-      "model": "sub-topic",
-      "via": "contents"
+      "via": "contents",
+      "model": "sub-topic"
     },
     "level": {
       "type": "enumeration",
@@ -62,10 +62,6 @@
       ],
       "required": true,
       "default": "youtube"
-    },
-    "views": {
-      "type": "integer",
-      "default": 0
     }
   }
 }
