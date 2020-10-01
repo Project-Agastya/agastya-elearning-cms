@@ -9,8 +9,13 @@ const { sanitizeEntity } = require('strapi-utils');
 module.exports = {
     async findOne(ctx) {
         const { id } = ctx.params;
-
+        let entityResp;
         const entity = await strapi.services['sub-topic'].findOne({ id },['topic','contents','contents.classes','image']);
-        return sanitizeEntity(entity, { model: strapi.models['sub-topic'] });
+        if(entity){
+            entity["views"] = entity["views"] + 1 
+            let id = entity["id"]
+            entityResp = await strapi.services['sub-topic'].update({ id }, entity)
+        }
+        return entity;
     },
 };

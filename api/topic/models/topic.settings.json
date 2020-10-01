@@ -20,8 +20,8 @@
       "dominant": true
     },
     "subTopics": {
-      "collection": "sub-topic",
-      "via": "topic"
+      "via": "topic",
+      "collection": "sub-topic"
     }
   }
 }

@@ -29,12 +29,16 @@
       "required": true
     },
     "topic": {
-      "via": "subTopics",
-      "model": "topic"
+      "model": "topic",
+      "via": "subTopics"
     },
     "contents": {
-      "via": "subTopic",
-      "collection": "content"
+      "collection": "content",
+      "via": "subTopic"
+    },
+    "views": {
+      "type": "integer",
+      "default": 0
     }
   }
 }
