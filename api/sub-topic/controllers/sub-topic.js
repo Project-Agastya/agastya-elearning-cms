@@ -9,12 +9,50 @@ const { sanitizeEntity } = require('strapi-utils');
 module.exports = {
     async findOne(ctx) {
         const { id } = ctx.params;
+        const normalContentAudience = "bothteacherstudent"
+        const exclusiveContent = "teacherexclusive"
         let entityResp;
         const entity = await strapi.services['sub-topic'].findOne({ id },['topic','contents','contents.classes','image']);
         if(entity){
+            let anyExclusiveContent = false
+            let anyNormalContent = false
+            for(let content of entity.contents){
+                let audience = content.audience.toLowerCase()
+                if(normalContentAudience.includes(audience))
+                    anyNormalContent = true 
+                if(exclusiveContent === audience)
+                    anyExclusiveContent = true
+            }
+            entity["anyNormalContent"] = anyNormalContent
+            entity["anyExclusiveContent"] = anyExclusiveContent   
             entity["views"] = entity["views"] + 1 
             let id = entity["id"]
             entityResp = await strapi.services['sub-topic'].update({ id }, entity)
+        }
+        return entity;
+    },
+
+    async find(ctx) {
+        const { id } = ctx.params;
+        const normalContentAudience = "bothteacherstudent"
+        const exclusiveContent = "teacherexclusive"
+        let entityResp;
+        const entity = await strapi.services['sub-topic'].find(ctx.query,['topic','topic.categories','contents','contents.classes','image']);
+        if(entity){
+            for(let subTopic of entity){
+                let anyExclusiveContent = false
+                let anyNormalContent = false
+                for(let content of subTopic.contents){
+                    let audience = content.audience.toLowerCase()
+                    if(normalContentAudience.includes(audience))
+                        anyNormalContent = true 
+                    if(exclusiveContent === audience)
+                        anyExclusiveContent = true
+                }
+                subTopic["anyNormalContent"] = anyNormalContent
+                subTopic["anyExclusiveContent"] = anyExclusiveContent
+                delete subTopic["contents"]
+            }   
         }
         return entity;
     },
