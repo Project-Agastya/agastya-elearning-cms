@@ -42,7 +42,9 @@ module.exports = {
             for(let subTopic of entity){
                 let anyExclusiveContent = false
                 let anyNormalContent = false
+                let languages = new Set()
                 for(let content of subTopic.contents){
+                    languages.add(content.language)
                     let audience = content.audience.toLowerCase()
                     if(normalContentAudience.includes(audience))
                         anyNormalContent = true 
@@ -51,6 +53,7 @@ module.exports = {
                 }
                 subTopic["anyNormalContent"] = anyNormalContent
                 subTopic["anyExclusiveContent"] = anyExclusiveContent
+                subTopic['languages'] = JSON.parse(JSON.stringify(Array.from(languages.values())));
                 delete subTopic["contents"]
             }   
         }
