@@ -12,7 +12,7 @@
   "devDependencies": {},
   "dependencies": {
     "flat": "^5.0.2",
-    "knex": "<0.20.0",
+    "knex": "<2.5.0",
     "pg": "^8.2.1",
     "pluralize": "^8.0.0",
     "sqlite3": "latest",
